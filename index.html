@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Twitter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>🐦 Mini Twitter</h1>
+    </header>
+
+    <main>
+
+        <!-- Create Post -->
+        <section class="post-box">
+
+            <div class="profile">
+                <div class="avatar">R</div>
+
+                <div>
+                    <h3>Rasigapriya</h3>
+                    <p>@rasigapriya</p>
+                </div>
+            </div>
+
+            <textarea
+                id="postText"
+                maxlength="280"
+                placeholder="What's happening?"
+            ></textarea>
+
+            <div class="post-bottom">
+                <span id="counter">0/280</span>
+                <button onclick="addPost()">Post</button>
+            </div>
+
+        </section>
+
+        <!-- Posts -->
+        <section id="posts"></section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
