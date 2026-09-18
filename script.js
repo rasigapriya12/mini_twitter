@@ -1,142 +1,103 @@
-let posts = JSON.parse(localStorage.getItem("posts")) || [];
+// Create Post
 
-let postText = document.getElementById("postText");
-let counter = document.getElementById("counter");
+document.getElementById("postBtn").addEventListener("click", function () {
 
-
-
-postText.addEventListener("input", function () {
-
-    counter.textContent = postText.value.length + "/280";
-
-});
-
-
-function addPost() {
-
-    let text = postText.value.trim();
+    let text = document.getElementById("postText").value.trim();
 
     if (text === "") {
         alert("Please write something!");
         return;
     }
 
-    let post = {
-        id: Date.now(),
-        text: text,
-        likes: 0
-    };
+    let post = document.createElement("div");
 
-    posts.unshift(post);
+    post.className = "post";
 
-    savePosts();
+    post.innerHTML = `
+        <div class="avatar" style="background:#e1d2ff;color:#422080;">
+            M
+        </div>
 
-    postText.value = "";
-    counter.textContent = "0/280";
+        <div class="post-content">
+            <h3>Monika</h3>
+            <p class="role">IT Student</p>
+            <p class="text">${text}</p>
+            <p class="time">Just now</p>
+        </div>
 
-    displayPosts();
-}
+        <button class="like-btn">
+            👍 Like (<span>0</span>)
+        </button>
+    `;
+
+    document.getElementById("posts").prepend(post);
+
+    document.getElementById("postText").value = "";
+
+    addLikeFunction(post.querySelector(".like-btn"));
+});
 
 
-function displayPosts() {
+// Like Button
 
-    let postsContainer = document.getElementById("posts");
+function addLikeFunction(button) {
 
-    postsContainer.innerHTML = "";
+    button.addEventListener("click", function () {
 
-    for (let i = 0; i < posts.length; i++) {
+        let count = this.querySelector("span");
 
-        let post = posts[i];
+        let number = parseInt(count.textContent);
 
-        let postElement = document.createElement("div");
+        if (this.classList.contains("liked")) {
 
-        postElement.className = "post";
+            number--;
 
-        postElement.innerHTML = `
+            this.classList.remove("liked");
 
-            <div class="post-header">
+        } else {
 
-                <div class="post-user">
+            number++;
 
-                    <div class="avatar">R</div>
-
-                    <div>
-                        <h3>Rasigapriya</h3>
-                        <p>@rasigapriya</p>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <p class="post-content">
-                ${post.text}
-            </p>
-
-            <div class="post-actions">
-
-                <button 
-                    class="like-btn"
-                    onclick="likePost(${post.id})">
-
-                    ❤️
-                    <span class="like-count">${post.likes}</span>
-
-                </button>
-
-                <button
-                    class="delete-btn"
-                    onclick="deletePost(${post.id})">
-
-                    🗑️ Delete
-
-                </button>
-
-            </div>
-
-        `;
-
-        postsContainer.appendChild(postElement);
-    }
-}
-
-function likePost(id) {
-
-    for (let i = 0; i < posts.length; i++) {
-
-        if (posts[i].id === id) {
-
-            posts[i].likes++;
-
+            this.classList.add("liked");
         }
-    }
 
-    savePosts();
-
-    displayPosts();
+        count.textContent = number;
+    });
 }
 
 
+// Existing Like Buttons
+
+let likeButtons = document.querySelectorAll(".like-btn");
+
+likeButtons.forEach(function (button) {
+    addLikeFunction(button);
+});
 
 
-function deletePost(id) {
+// Follow Buttons
 
-    posts = posts.filter(function(post) {
+let followButtons = document.querySelectorAll(".follow-btn");
 
-        return post.id !== id;
+followButtons.forEach(function (button) {
+
+    button.addEventListener("click", function () {
+
+        if (this.textContent === "Follow") {
+            this.textContent = "Following";
+        } else {
+            this.textContent = "Follow";
+        }
 
     });
 
-    savePosts();
-
-    displayPosts();
-}
+});
 
 
-function savePosts() {
+// Logout
 
-    localStorage.setItem("posts", JSON.stringify(posts));
+document.getElementById("logoutBtn").addEventListener("click", function () {
 
+    alert("You have been logged out!");
 
-
-displayPosts();
+});
