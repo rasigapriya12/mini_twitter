@@ -4,7 +4,6 @@ let postText = document.getElementById("postText");
 let counter = document.getElementById("counter");
 
 
-// Character Counter
 
 postText.addEventListener("input", function () {
 
@@ -12,8 +11,6 @@ postText.addEventListener("input", function () {
 
 });
 
-
-// Add Post
 
 function addPost() {
 
@@ -40,8 +37,6 @@ function addPost() {
     displayPosts();
 }
 
-
-// Display Posts
 
 function displayPosts() {
 
@@ -105,9 +100,6 @@ function displayPosts() {
     }
 }
 
-
-// Like Post
-
 function likePost(id) {
 
     for (let i = 0; i < posts.length; i++) {
@@ -125,7 +117,7 @@ function likePost(id) {
 }
 
 
-// Delete Post
+
 
 function deletePost(id) {
 
@@ -141,15 +133,10 @@ function deletePost(id) {
 }
 
 
-// Save Posts
-
 function savePosts() {
 
     localStorage.setItem("posts", JSON.stringify(posts));
 
-}
 
-
-// Show Posts When Page Loads
 
 displayPosts();
