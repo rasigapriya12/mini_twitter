@@ -9,41 +9,180 @@
 
 <body>
 
-    <header>
-        <h1>🐦 Mini Twitter</h1>
-    </header>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <span>🐦</span> Mini Twitter
+        </div>
 
-    <main>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Profile</a>
+            <a href="#">Monika</a>
+            <button id="logoutBtn">Logout</button>
+        </div>
+    </nav>
 
-        
-        <section class="post-box">
+    <!-- Main Container -->
+    <div class="container">
 
-            <div class="profile">
-                <div class="avatar">R</div>
+        <!-- Left Side -->
+        <main>
 
-                <div>
-                    <h3>Rasigapriya</h3>
-                    <p>@rasigapriya</p>
+            <!-- Create Post -->
+            <section class="card create-post">
+                <h2>Create a post</h2>
+
+                <textarea id="postText"
+                    placeholder="What's on your mind?"></textarea>
+
+                <button class="post-btn" id="postBtn">Post</button>
+            </section>
+
+            <!-- Posts -->
+            <section class="card">
+                <h2>Posts</h2>
+
+                <div id="posts">
+
+                    <!-- Post 1 -->
+                    <div class="post">
+                        <div class="avatar blue">R</div>
+
+                        <div class="post-content">
+                            <h3>Rahul</h3>
+                            <p class="role">AI Enthusiast</p>
+                            <p class="text">Learning JavaScript today!</p>
+                            <p class="time">2 minutes ago</p>
+                        </div>
+
+                        <button class="like-btn">
+                            👍 Like (<span>10</span>)
+                        </button>
+                    </div>
+
+                    <!-- Post 2 -->
+                    <div class="post">
+                        <div class="avatar pink">P</div>
+
+                        <div class="post-content">
+                            <h3>Priya</h3>
+                            <p class="role">Web Developer</p>
+                            <p class="text">AI is changing the world!</p>
+                            <p class="time">10 minutes ago</p>
+                        </div>
+
+                        <button class="like-btn">
+                            👍 Like (<span>1000</span>)
+                        </button>
+                    </div>
+
+                    <!-- Post 3 -->
+                    <div class="post">
+                        <div class="avatar green">A</div>
+
+                        <div class="post-content">
+                            <h3>Arun</h3>
+                            <p class="role">Java Developer</p>
+                            <p class="text">Coding is fun!</p>
+                            <p class="time">30 minutes ago</p>
+                        </div>
+
+                        <button class="like-btn">
+                            👍 Like (<span>60</span>)
+                        </button>
+                    </div>
+
                 </div>
-            </div>
+            </section>
 
-            <textarea
-                id="postText"
-                maxlength="280"
-                placeholder="What's happening?"
-            ></textarea>
+        </main>
 
-            <div class="post-bottom">
-                <span id="counter">0/280</span>
-                <button onclick="addPost()">Post</button>
-            </div>
+        <!-- Right Side -->
+        <aside>
 
-        </section>
+            <!-- Profile -->
+            <section class="card profile">
+                <h2>Your Profile</h2>
 
-        
-        <section id="posts"></section>
+                <div class="profile-info">
+                    <div class="profile-avatar">M</div>
 
-    </main>
+                    <div>
+                        <h3>Monika</h3>
+                        <p>IT student</p>
+                    </div>
+                </div>
+
+                <div class="stats">
+                    <div>
+                        <strong>20</strong>
+                        <span>Posts</span>
+                    </div>
+
+                    <div>
+                        <strong>30</strong>
+                        <span>Following</span>
+                    </div>
+
+                    <div>
+                        <strong>80</strong>
+                        <span>Followers</span>
+                    </div>
+                </div>
+
+                <button class="open-profile">Open Profile</button>
+            </section>
+
+            <!-- Suggested Users -->
+            <section class="card">
+                <h2>Suggested Users</h2>
+
+                <div class="user">
+                    <div class="avatar blue">R</div>
+
+                    <div class="user-info">
+                        <h3>Rahul</h3>
+                        <p>AI Enthusiast</p>
+                    </div>
+
+                    <button class="follow-btn">Follow</button>
+                </div>
+
+                <div class="user">
+                    <div class="avatar pink">P</div>
+
+                    <div class="user-info">
+                        <h3>Priya</h3>
+                        <p>Web Developer</p>
+                    </div>
+
+                    <button class="follow-btn">Follow</button>
+                </div>
+
+                <div class="user">
+                    <div class="avatar green">A</div>
+
+                    <div class="user-info">
+                        <h3>Arun</h3>
+                        <p>Java Developer</p>
+                    </div>
+
+                    <button class="follow-btn">Follow</button>
+                </div>
+
+            </section>
+
+            <!-- Bottom Message -->
+            <section class="share-box">
+                <div>🐦</div>
+                <h3>Share your thoughts</h3>
+                <p>Connect with the world!</p>
+            </section>
+
+        </aside>
+
+    </div>
 
     <script src="script.js"></script>
 
